@@ -5,13 +5,12 @@ import CategoryFilter from './components/CategoryFilter';
 import RecipeCard from './components/RecipeCard';
 import RecipeDetails from './pages/RecipeDetails';
 import { RECIPES } from './data/recipes';
+import { filterRecipesByCategory } from './utils/recipeUtils';
 
 function HomePage() {
   const [selectedCategory, setSelectedCategory] = useState('All');
 
-  const filteredRecipes = RECIPES.filter(recipe => 
-    selectedCategory === 'All' ? true : recipe.category === selectedCategory
-  );
+  const filteredRecipes = filterRecipesByCategory(RECIPES, selectedCategory);
 
   return (
     <div className="min-h-screen bg-gray-50">

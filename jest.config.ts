@@ -3,11 +3,11 @@ import type { Config } from '@jest/types';
 const config: Config.InitialOptions = {
   preset: 'ts-jest',
   transform: {
-    '^.+\\.(ts|tsx)$': 'babel-jest', // Use Babel to transform TS and TSX files
+    '^.+\\.(ts|tsx)$': 'ts-jest',  // Use ts-jest for TypeScript files
   },
-  moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx'], // Add TypeScript and JSX extensions
-  transformIgnorePatterns: ['/node_modules/'], // Ensure node_modules are excluded from transformations
   testEnvironment: 'jest-environment-jsdom',
+  moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx'],
+  setupFilesAfterEnv: ['@testing-library/jest-dom/extend-expect'],  // Ensure jest-dom matchers are available
 };
 
 export default config;
